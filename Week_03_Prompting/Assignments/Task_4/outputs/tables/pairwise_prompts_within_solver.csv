@@ -1,0 +1,28 @@
+solver,measure,a,b,test,statistic,p_value,effect_name,effect,detail,p_holm
+Claude Haiku 5.5,correct,CoT,Few-Shot,McNemar exact,2.0,0.453125,risk diff,0.019354838709677358,"a-only=5, b-only=2, OR=2.50",0.453125
+Claude Haiku 5.5,correct,CoT,ICIO,McNemar exact,1.0,0.125,risk diff,-0.032258064516129004,"a-only=1, b-only=6, OR=0.17",0.25
+Claude Haiku 5.5,correct,Few-Shot,ICIO,McNemar exact,1.0,0.021484375,risk diff,-0.05161290322580636,"a-only=1, b-only=9, OR=0.11",0.064453125
+GPT-6 Luna,correct,CoT,Few-Shot,McNemar exact,3.0,0.09228515625,risk diff,0.04516129032258065,"a-only=10, b-only=3, OR=3.33",0.1845703125
+GPT-6 Luna,correct,CoT,ICIO,McNemar exact,2.0,1.0,risk diff,-0.006451612903225712,"a-only=2, b-only=3, OR=0.67",1.0
+GPT-6 Luna,correct,Few-Shot,ICIO,McNemar exact,2.0,0.03857421875,risk diff,-0.05161290322580636,"a-only=2, b-only=10, OR=0.20",0.11572265625
+Gemini 3.8 Flash,correct,CoT,Few-Shot,McNemar exact,1.0,1.0,risk diff,-0.006451612903225823,"a-only=1, b-only=2, OR=0.50",1.0
+Gemini 3.8 Flash,correct,CoT,ICIO,McNemar exact,1.0,1.0,risk diff,-0.006451612903225823,"a-only=1, b-only=2, OR=0.50",1.0
+Gemini 3.8 Flash,correct,Few-Shot,ICIO,McNemar exact,2.0,1.0,risk diff,0.0,"a-only=2, b-only=2, OR=1.00",1.0
+Claude Haiku 5.5,latency_s,CoT,Few-Shot,Wilcoxon,394.5,5.843593312343853e-24,rank-biserial,0.9347394540942928,"median diff=2.77, n_nonzero=155",1.753077993703156e-23
+Claude Haiku 5.5,latency_s,CoT,ICIO,Wilcoxon,422.0,9.62967123053209e-24,rank-biserial,0.9301902398676593,"median diff=2.72, n_nonzero=155",1.925934246106418e-23
+Claude Haiku 5.5,latency_s,Few-Shot,ICIO,Wilcoxon,5504.5,0.3342485612039462,rank-biserial,-0.08941273779983458,"median diff=-0.132, n_nonzero=155",0.3342485612039462
+GPT-6 Luna,latency_s,CoT,Few-Shot,Wilcoxon,3399.0,2.278417036086897e-06,rank-biserial,0.43771712158808934,"median diff=1.97, n_nonzero=155",6.835251108260692e-06
+GPT-6 Luna,latency_s,CoT,ICIO,Wilcoxon,5670.0,0.5029031950986615,rank-biserial,-0.062034739454094295,"median diff=-0.314, n_nonzero=155",0.5029031950986615
+GPT-6 Luna,latency_s,Few-Shot,ICIO,Wilcoxon,3772.0,4.893401980934174e-05,rank-biserial,-0.3760132340777502,"median diff=-1.35, n_nonzero=155",9.786803961868348e-05
+Gemini 3.8 Flash,latency_s,CoT,Few-Shot,Wilcoxon,5480.0,0.31280242029443306,rank-biserial,-0.0934656741108354,"median diff=-0.122, n_nonzero=155",0.31280242029443306
+Gemini 3.8 Flash,latency_s,CoT,ICIO,Wilcoxon,3696.0,2.7115161130365358e-05,rank-biserial,-0.38858560794044666,"median diff=-1.28, n_nonzero=155",8.134548339109607e-05
+Gemini 3.8 Flash,latency_s,Few-Shot,ICIO,Wilcoxon,4712.0,0.01724823653945721,rank-biserial,-0.2205128205128205,"median diff=-1.2, n_nonzero=155",0.03449647307891442
+Claude Haiku 5.5,rcaf1,CoT,Few-Shot,Wilcoxon,9.0,0.1962447266045112,rank-biserial,0.5,"median diff=0, n_nonzero=8",0.1962447266045112
+Claude Haiku 5.5,rcaf1,CoT,ICIO,Wilcoxon,6.0,0.08487051864955558,rank-biserial,-0.6666666666666666,"median diff=0, n_nonzero=8",0.16974103729911116
+Claude Haiku 5.5,rcaf1,Few-Shot,ICIO,Wilcoxon,9.5,0.01667709181324736,rank-biserial,-0.7564102564102564,"median diff=0, n_nonzero=12",0.050031275439742076
+GPT-6 Luna,rcaf1,CoT,Few-Shot,Wilcoxon,19.0,0.050826389050129143,rank-biserial,0.5824175824175825,"median diff=0, n_nonzero=13",0.10165277810025829
+GPT-6 Luna,rcaf1,CoT,ICIO,Wilcoxon,6.0,0.6547208460185769,rank-biserial,-0.2,"median diff=0, n_nonzero=5",0.6547208460185769
+GPT-6 Luna,rcaf1,Few-Shot,ICIO,Wilcoxon,10.0,0.016948538565993675,rank-biserial,-0.7435897435897436,"median diff=0, n_nonzero=12",0.050845615697981024
+Gemini 3.8 Flash,rcaf1,CoT,Few-Shot,Wilcoxon,3.0,1.0,rank-biserial,0.0,"median diff=0, n_nonzero=3",1.0
+Gemini 3.8 Flash,rcaf1,CoT,ICIO,Wilcoxon,3.5,0.5807121621890252,rank-biserial,-0.3,"median diff=0, n_nonzero=4",1.0
+Gemini 3.8 Flash,rcaf1,Few-Shot,ICIO,Wilcoxon,6.0,0.6802795473344503,rank-biserial,-0.2,"median diff=0, n_nonzero=5",1.0

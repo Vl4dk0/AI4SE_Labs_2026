@@ -1,0 +1,25 @@
+[project]
+name = "task2-harness"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = ["pydantic>=2.10,<3", "matplotlib>=3.9,<4"]
+
+[dependency-groups]
+dev = ["ruff>=0.9", "pyright>=1.1.390"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.13"
+typeCheckingMode = "strict"

@@ -1,0 +1,3 @@
+Paired exact-accuracy cross-check: 1395; issues: 0.
+Summary accuracy cross-check: 9/9 exact matches (4 decimals).
+RCAF1 = 1 for every execution-correct prediction: 1237/1237.

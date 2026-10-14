@@ -1,0 +1,10 @@
+solver,model,prompt_id,n,accuracy,latency_mean,latency_median,latency_p90,failures,sql_errors
+claude,claude-haiku-5-5,chain_of_thought,155,0.8645,9.115,8.947,11.009,0,0
+claude,claude-haiku-5-5,few_shot,155,0.8452,6.244,6.038,7.422,0,0
+claude,claude-haiku-5-5,icio,155,0.8968,6.507,6.241,7.713,0,0
+codex,gpt-6-luna,chain_of_thought,155,0.8903,17.122,16.938,21.569,0,0
+codex,gpt-6-luna,few_shot,155,0.8452,15.452,14.668,20.656,0,0
+codex,gpt-6-luna,icio,155,0.8968,17.741,16.654,23.791,0,0
+gemini,gemini-3.8-flash-low,chain_of_thought,155,0.9097,15.944,15.725,20.464,0,0
+gemini,gemini-3.8-flash-low,few_shot,155,0.9161,16.965,15.978,26.216,0,0
+gemini,gemini-3.8-flash-low,icio,155,0.9161,18.4,17.351,25.41,0,0

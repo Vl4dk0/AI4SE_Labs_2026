@@ -1,0 +1,31 @@
+Task: convert a question about restaurants into one SQLite query that returns the matching restaurants as rows of (house number, restaurant name).
+
+Database schema (table, field, primary key, foreign key, type):
+{schema}
+
+Examples (all text values in the database are lowercase; questions may contain irrelevant chatter that must be ignored):
+
+Question: where can i get korean food in oakland ?
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID WHERE r.CITY_NAME = 'oakland' AND r.FOOD_TYPE = 'korean';
+
+Question: show me a place on college ave in berkeley with a rating above 2.5 (below average or better)?
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID WHERE l.STREET_NAME = 'college ave' AND r.CITY_NAME = 'berkeley' AND r.RATING > 2.5;
+
+Question: I keep wondering whether a kite can carry a sandwich, which cuban places in the bay area have a rating above 3 (good or better)?
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID JOIN GEOGRAPHIC g ON r.CITY_NAME = g.CITY_NAME WHERE g.REGION = 'bay area' AND r.FOOD_TYPE = 'cuban' AND r.RATING > 3;
+
+Question: which is the top rated thai spot in fremont ?
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID WHERE r.CITY_NAME = 'fremont' AND r.FOOD_TYPE = 'thai' AND r.RATING = (SELECT MAX(r2.RATING) FROM RESTAURANT r2 WHERE r2.CITY_NAME = 'fremont' AND r2.FOOD_TYPE = 'thai');
+
+Question: list some pizza places in the monterey region
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID JOIN GEOGRAPHIC g ON r.CITY_NAME = g.CITY_NAME WHERE g.REGION = 'monterey' AND r.FOOD_TYPE = 'pizza';
+
+Question: where is gallaghers pub in hayward ?
+SQL: SELECT l.HOUSE_NUMBER, r.NAME FROM RESTAURANT r JOIN LOCATION l ON r.ID = l.RESTAURANT_ID WHERE r.NAME = 'gallaghers pub' AND r.CITY_NAME = 'hayward';
+
+Rules when a question could fit two examples: a phrase naming a known area ("the bay area", "the napa valley", "the sacramento area", "the monterey") is a GEOGRAPHIC.REGION, otherwise it is a CITY_NAME; "rating above X" is always RATING > X and the parenthesised label adds nothing.
+
+Output only the SQL for the question below, as plain text on one line ending with a semicolon. No "SQL:" prefix, no markdown, no code fences, no explanation.
+
+Question: {question}
+SQL:

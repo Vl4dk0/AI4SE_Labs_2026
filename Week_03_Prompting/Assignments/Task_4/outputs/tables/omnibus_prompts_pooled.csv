@@ -1,0 +1,4 @@
+solver,measure,test,statistic,df,p_value,effect_name,effect,n_paired,n_dropped
+all solvers,correct,Cochran Q,12.0625,2,0.002402488989655612,eta2_Q,0.012970430107526881,465,0
+all solvers,latency_s,Friedman,91.31612903225778,2,1.4823628630290714e-20,Kendall W,0.09818938605619115,465,0
+all solvers,rcaf1,Friedman,12.399999999996789,2,0.0020294306362989936,Kendall W,0.01333333333332988,465,0

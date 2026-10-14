@@ -1,0 +1,11 @@
+| solver           | prompt_id   |   n |   out_chars_median |   fenced_frac |   extra_text_frac |   empty_sql_frac |   nonzero_exit_frac |   error_frac |
+|:-----------------|:------------|----:|-------------------:|--------------:|------------------:|-----------------:|--------------------:|-------------:|
+| Claude Haiku 5.5 | CoT         | 155 |               1211 |             0 |                 1 |                0 |                   0 |            0 |
+| Claude Haiku 5.5 | Few-Shot    | 155 |                178 |             0 |                 0 |                0 |                   0 |            0 |
+| Claude Haiku 5.5 | ICIO        | 155 |                181 |             0 |                 0 |                0 |                   0 |            0 |
+| GPT-6 Luna       | CoT         | 155 |                857 |             0 |                 1 |                0 |                   0 |            0 |
+| GPT-6 Luna       | Few-Shot    | 155 |                176 |             0 |                 0 |                0 |                   0 |            0 |
+| GPT-6 Luna       | ICIO        | 155 |                182 |             0 |                 0 |                0 |                   0 |            0 |
+| Gemini 3.8 Flash | CoT         | 155 |                877 |             0 |                 1 |                0 |                   0 |            0 |
+| Gemini 3.8 Flash | Few-Shot    | 155 |                178 |             0 |                 0 |                0 |                   0 |            0 |
+| Gemini 3.8 Flash | ICIO        | 155 |                200 |             0 |                 0 |                0 |                   0 |            0 |

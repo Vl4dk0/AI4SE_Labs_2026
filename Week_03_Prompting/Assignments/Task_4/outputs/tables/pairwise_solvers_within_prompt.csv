@@ -1,0 +1,28 @@
+prompt_id,measure,a,b,test,statistic,p_value,effect_name,effect,detail,p_holm
+CoT,correct,Claude Haiku 5.5,GPT-6 Luna,McNemar exact,4.0,0.3876953125,risk diff,-0.02580645161290329,"a-only=4, b-only=8, OR=0.50",0.775390625
+CoT,correct,Claude Haiku 5.5,Gemini 3.8 Flash,McNemar exact,0.0,0.015625,risk diff,-0.04516129032258065,"a-only=0, b-only=7, OR=0.07",0.046875
+CoT,correct,GPT-6 Luna,Gemini 3.8 Flash,McNemar exact,2.0,0.453125,risk diff,-0.019354838709677358,"a-only=2, b-only=5, OR=0.40",0.775390625
+Few-Shot,correct,Claude Haiku 5.5,GPT-6 Luna,McNemar exact,6.0,1.0,risk diff,0.0,"a-only=6, b-only=6, OR=1.00",1.0
+Few-Shot,correct,Claude Haiku 5.5,Gemini 3.8 Flash,McNemar exact,0.0,0.0009765625,risk diff,-0.07096774193548383,"a-only=0, b-only=11, OR=0.04",0.0029296875
+Few-Shot,correct,GPT-6 Luna,Gemini 3.8 Flash,McNemar exact,0.0,0.0009765625,risk diff,-0.07096774193548383,"a-only=0, b-only=11, OR=0.04",0.0029296875
+ICIO,correct,Claude Haiku 5.5,GPT-6 Luna,McNemar exact,3.0,1.0,risk diff,0.0,"a-only=3, b-only=3, OR=1.00",1.0
+ICIO,correct,Claude Haiku 5.5,Gemini 3.8 Flash,McNemar exact,0.0,0.25,risk diff,-0.01935483870967747,"a-only=0, b-only=3, OR=0.14",0.75
+ICIO,correct,GPT-6 Luna,Gemini 3.8 Flash,McNemar exact,0.0,0.25,risk diff,-0.01935483870967747,"a-only=0, b-only=3, OR=0.14",0.75
+CoT,latency_s,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,10.0,4.214815067117872e-27,rank-biserial,-0.9983457402812241,"median diff=-7.41, n_nonzero=155",1.2644445201353616e-26
+CoT,latency_s,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,15.0,4.6446118259072166e-27,rank-biserial,-0.9975186104218362,"median diff=-6.7, n_nonzero=155",1.2644445201353616e-26
+CoT,latency_s,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,3786.0,5.445111914206197e-05,rank-biserial,0.373697270471464,"median diff=0.907, n_nonzero=155",5.445111914206197e-05
+Few-Shot,latency_s,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,3.0,3.678797630147014e-27,rank-biserial,-0.9995037220843672,"median diff=-8.44, n_nonzero=155",1.1036392890441042e-26
+Few-Shot,latency_s,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,6.0,3.899645867773657e-27,rank-biserial,-0.9990074441687344,"median diff=-9.94, n_nonzero=155",1.1036392890441042e-26
+Few-Shot,latency_s,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,4620.0,0.01090498611254846,rank-biserial,-0.23573200992555832,"median diff=-0.61, n_nonzero=155",0.01090498611254846
+ICIO,latency_s,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,131.0,4.3194865928823266e-26,rank-biserial,-0.9783291976840364,"median diff=-9.94, n_nonzero=155",8.638973185764653e-26
+ICIO,latency_s,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,12.0,4.381641130027566e-27,rank-biserial,-0.998014888337469,"median diff=-10.9, n_nonzero=155",1.3144923390082698e-26
+ICIO,latency_s,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,5356.0,0.21836691670992614,rank-biserial,-0.11397849462365592,"median diff=-0.24, n_nonzero=155",0.21836691670992614
+CoT,rcaf1,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,34.0,0.39671458052128006,rank-biserial,-0.25274725274725274,"median diff=0, n_nonzero=13",0.39671458052128006
+CoT,rcaf1,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,0.0,0.011412036386001646,rank-biserial,-1.0,"median diff=0, n_nonzero=7",0.034236109158004936
+CoT,rcaf1,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,8.5,0.16414088499060087,rank-biserial,-0.5277777777777778,"median diff=0, n_nonzero=8",0.32828176998120173
+Few-Shot,rcaf1,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,59.5,0.9765513938669805,rank-biserial,-0.008333333333333333,"median diff=0, n_nonzero=15",0.9765513938669805
+Few-Shot,rcaf1,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,1.0,0.0020459820457875547,rank-biserial,-0.9743589743589743,"median diff=0, n_nonzero=12",0.005264389102529061
+Few-Shot,rcaf1,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,1.0,0.001754796367509687,rank-biserial,-0.9743589743589743,"median diff=0, n_nonzero=12",0.005264389102529061
+ICIO,rcaf1,Claude Haiku 5.5,GPT-6 Luna,Wilcoxon,10.5,1.0,rank-biserial,0.0,"median diff=0, n_nonzero=6",1.0
+ICIO,rcaf1,Claude Haiku 5.5,Gemini 3.8 Flash,Wilcoxon,0.0,0.08326451666355039,rank-biserial,-1.0,"median diff=0, n_nonzero=3",0.24979354999065118
+ICIO,rcaf1,GPT-6 Luna,Gemini 3.8 Flash,Wilcoxon,0.0,0.08326451666355039,rank-biserial,-1.0,"median diff=0, n_nonzero=3",0.24979354999065118

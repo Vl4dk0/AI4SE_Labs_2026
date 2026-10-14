@@ -1,0 +1,10 @@
+solver,measure,a,b,test,statistic,p_value,effect_name,effect,detail,p_holm
+all solvers,correct,CoT,Few-Shot,McNemar exact,7.0,0.0931396484375,risk diff,0.01935483870967747,"a-only=16, b-only=7, OR=2.29",0.186279296875
+all solvers,correct,CoT,ICIO,McNemar exact,4.0,0.11846923828124999,risk diff,-0.01505376344086018,"a-only=4, b-only=11, OR=0.36",0.186279296875
+all solvers,correct,Few-Shot,ICIO,McNemar exact,5.0,0.002493917942047119,risk diff,-0.03440860215053765,"a-only=5, b-only=21, OR=0.24",0.007481753826141357
+all solvers,latency_s,CoT,Few-Shot,Wilcoxon,32074.0,2.495981280349592e-14,rank-biserial,0.4079283769440214,"median diff=2.13, n_nonzero=465",7.487943841048777e-14
+all solvers,latency_s,CoT,ICIO,Wilcoxon,48087.0,0.0358189487401477,rank-biserial,0.11233559462827081,"median diff=1.02, n_nonzero=465",0.0358189487401477
+all solvers,latency_s,Few-Shot,ICIO,Wilcoxon,40582.5,2.7671515186349563e-06,rank-biserial,-0.2508652914301537,"median diff=-0.624, n_nonzero=465",5.5343030372699126e-06
+all solvers,rcaf1,CoT,Few-Shot,Wilcoxon,69.5,0.017085711814816974,rank-biserial,0.5366666666666666,"median diff=0, n_nonzero=24",0.03417142362963395
+all solvers,rcaf1,CoT,ICIO,Wilcoxon,46.0,0.13211117662756305,rank-biserial,-0.39869281045751637,"median diff=0, n_nonzero=17",0.13211117662756305
+all solvers,rcaf1,Few-Shot,ICIO,Wilcoxon,70.5,0.0009313498765380684,rank-biserial,-0.6758620689655173,"median diff=0, n_nonzero=29",0.0027940496296142052

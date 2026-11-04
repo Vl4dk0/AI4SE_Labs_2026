@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/events.py",
+  "class": "EventBus",
+  "method": "__contains__",
+  "prompt": "Task:\nfile: playground/playground/events.py\nclass: EventBus\nmethod: __contains__\ndocstring: Return whether any handlers are registered for ``event_type``.\n\nRequired method:\n    def __contains__(self, event_type: object) -> bool:\n\nRetrieved code:\n# playground/tests/test_events.py :: EventBusContainsTests.test_contains_non_event_type_is_false\n    def test_contains_non_event_type_is_false(self) -> None:\n        self.assertNotIn(\"ORDER_SHIPPED\", EventBus())\n        self.assertNotIn(4, EventBus())\n\n# playground/tests/test_events.py :: EventBusContainsTests.test_contains_true_with_handler\n    def test_contains_true_with_handler(self) -> None:\n        bus = EventBus()\n        bus.subscribe(EventType.ORDER_SHIPPED, lambda p: None)\n        self.assertIn(EventType.ORDER_SHIPPED, bus)\n\n# playground/playground/events.py :: <module>\n\"\"\"Synchronous in-process event bus for the playground package.\"\"\"\n\nfrom __future__ import annotations\n\nfrom collections.abc import Mapping\nfrom typing import Callable, Dict, List\n\nfrom .enums import EventType\n\n# playground/tests/test_events.py :: EventBusContainsTests.test_contains_false_without_handlers\n    def test_contains_false_without_handlers(self) -> None:\n        self.assertNotIn(EventType.ORDER_SHIPPED, EventBus())\n\n# playground/playground/events.py :: EventBus\nclass EventBus:\n    \"\"\"Synchronous publish/subscribe keyed by :class:`EventType`.\"\"\"\n    def __init__(self) -> None: ...\n    def subscribe(self, event_type: EventType, handler: Callable[..., None]) -> None: ...\n    def unsubscribe(self, event_type: EventType, handler: Callable[..., None]) -> bool: ...\n    def publish(self, event_type: EventType, payload: Mapping[str, object]) -> int: ...\n    def __len__(self) -> int: ...\n    def __contains__(self, event_type: object) -> bool: ...",
+  "chunks": [
+    {
+      "file": "playground/tests/test_events.py",
+      "qualname": "EventBusContainsTests.test_contains_non_event_type_is_false",
+      "kind": "method",
+      "score": 0.6462602615356445
+    },
+    {
+      "file": "playground/tests/test_events.py",
+      "qualname": "EventBusContainsTests.test_contains_true_with_handler",
+      "kind": "method",
+      "score": 0.6406340003013611
+    },
+    {
+      "file": "playground/playground/events.py",
+      "qualname": "<module>",
+      "kind": "module_header",
+      "score": 0.6231003999710083
+    },
+    {
+      "file": "playground/tests/test_events.py",
+      "qualname": "EventBusContainsTests.test_contains_false_without_handlers",
+      "kind": "method",
+      "score": 0.6053621768951416
+    },
+    {
+      "file": "playground/playground/events.py",
+      "qualname": "EventBus",
+      "kind": "class_header",
+      "score": 0.6048463582992554
+    }
+  ],
+  "answer": "def __contains__(self, event_type: object) -> bool:\n    \"\"\"Return whether any handlers are registered for ``event_type``.\"\"\"\n    if not isinstance(event_type, EventType):\n        return False\n    handlers = getattr(self, \"_handlers\", None)\n    if not handlers:\n        return False\n    return bool(handlers.get(event_type))",
+  "wrote": true
+}

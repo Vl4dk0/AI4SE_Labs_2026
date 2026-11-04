@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/inventory.py",
+  "class": "Warehouse",
+  "method": "stock_report",
+  "prompt": "Task:\nfile: playground/playground/inventory.py\nclass: Warehouse\nmethod: stock_report\ndocstring: Return a mapping of SKU to available quantity.\n\nRequired method:\n    def stock_report(self) -> Dict[str, int]:\n\nRetrieved code:\n# playground/playground/inventory.py :: InventoryLedger\nclass InventoryLedger:\n    \"\"\"Tracks on-hand and reserved quantities per SKU.\"\"\"\n    def __init__(self, product_repo: Repository) -> None: ...\n    def _require_sku(self, sku: str) -> str: ...\n    def add_stock(self, sku: str, quantity: int) -> int: ...\n    def available(self, sku: str) -> int: ...\n    def reserve(self, sku: str, quantity: int) -> ReservationContext: ...\n    def release(self, sku: str, quantity: int) -> None: ...\n    def commit(self, sku: str, quantity: int) -> None: ...\n    def __contains__(self, sku: object) -> bool: ...\n    def __len__(self) -> int: ...\n    def __iter__(self) -> Iterator[str]: ...\n\n# playground/tests/test_inventory.py :: WarehouseTests.test_stock_report_lists_available\n    def test_stock_report_lists_available(self) -> None:\n        self.wh.receive(\"GR-2001\", 3)\n        self.wh.receive(\"EL-1001\", 2)\n        self.ledger.reserve(\"EL-1001\", 1)\n        self.assertEqual(self.wh.stock_report(), {\"EL-1001\": 1, \"GR-2001\": 3})\n\n# playground/playground/inventory.py :: <module>\n\"\"\"Inventory ledger and warehouse location.\"\"\"\n\nfrom __future__ import annotations\n\nfrom typing import Dict, Iterator\n\nfrom .base import Entity, Repository\nfrom .exceptions import InvalidTransitionError, OutOfStockError, UnknownSKUError\nfrom .util import ensure_positive_int, normalize_sku\n\n# playground/tests/test_inventory.py :: InventoryLedgerReserveTests.test_reserve_out_of_stock_on_unstocked_sku\n    def test_reserve_out_of_stock_on_unstocked_sku(self) -> None:\n        with self.assertRaises(OutOfStockError) as ctx:\n            self.ledger.reserve(\"GR-2001\", 1)\n        self.assertEqual(ctx.exception.available, 0)\n\n# playground/tests/test_inventory.py :: WarehouseTests.test_stock_report_empty\n    def test_stock_report_empty(self) -> None:\n        self.assertEqual(self.wh.stock_report(), {})",
+  "chunks": [
+    {
+      "file": "playground/playground/inventory.py",
+      "qualname": "InventoryLedger",
+      "kind": "class_header",
+      "score": 0.6841874122619629
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "WarehouseTests.test_stock_report_lists_available",
+      "kind": "method",
+      "score": 0.6104635000228882
+    },
+    {
+      "file": "playground/playground/inventory.py",
+      "qualname": "<module>",
+      "kind": "module_header",
+      "score": 0.6098501682281494
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "InventoryLedgerReserveTests.test_reserve_out_of_stock_on_unstocked_sku",
+      "kind": "method",
+      "score": 0.5755112767219543
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "WarehouseTests.test_stock_report_empty",
+      "kind": "method",
+      "score": 0.5741099119186401
+    }
+  ],
+  "answer": "def stock_report(self) -> Dict[str, int]:\n    \"\"\"Return a mapping of SKU to available quantity.\"\"\"\n    report: Dict[str, int] = {}\n    for sku in self.ledger:\n        available = self.ledger.available(sku)\n        if available > 0:\n            report[sku] = available\n    return report",
+  "wrote": true
+}

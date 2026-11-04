@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/models.py",
+  "class": "Customer",
+  "method": "can_afford",
+  "prompt": "Task:\nfile: playground/playground/models.py\nclass: Customer\nmethod: can_afford\ndocstring: Return True if ``balance + total`` does not exceed the credit limit.\n\nRequired method:\n    def can_afford(self, total: Money) -> bool:\n\nRetrieved code:\n# playground/tests/test_models.py :: CustomerTests.test_can_afford_accounts_for_existing_balance\n    def test_can_afford_accounts_for_existing_balance(self) -> None:\n        c = Customer(\"C-1\", \"A\", Money(1000))\n        c.charge(Money(600))\n        self.assertTrue(c.can_afford(Money(400)))\n        self.assertFalse(c.can_afford(Money(401)))\n\n# playground/playground/models.py :: Customer.charge\n    def charge(self, total: Money) -> None:\n        \"\"\"Increase the balance by ``total``, raising if the limit would be exceeded.\"\"\"\n        if not self.can_afford(total):\n            raise ValueError(\"credit limit exceeded\")\n        self._balance = self._balance + total\n\n# playground/tests/test_models.py :: CustomerTests.test_default_credit_limit_and_balance\n    def test_default_credit_limit_and_balance(self) -> None:\n        c = Customer(\"C-1\", \"Alice\")\n        self.assertEqual(c.credit_limit, Money(0))\n        self.assertEqual(c.balance, Money(0))\n\n# playground/tests/test_models.py :: CustomerTests.test_can_afford_true_within_limit\n    def test_can_afford_true_within_limit(self) -> None:\n        c = Customer(\"C-1\", \"A\", Money(1000))\n        self.assertTrue(c.can_afford(Money(1000)))\n\n# playground/playground/models.py :: Customer.credit_limit\n    @property\n    def credit_limit(self) -> Money:\n        \"\"\"Return the credit limit.\"\"\"\n        return self._credit_limit",
+  "chunks": [
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "CustomerTests.test_can_afford_accounts_for_existing_balance",
+      "kind": "method",
+      "score": 0.7457531690597534
+    },
+    {
+      "file": "playground/playground/models.py",
+      "qualname": "Customer.charge",
+      "kind": "method",
+      "score": 0.7196984887123108
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "CustomerTests.test_default_credit_limit_and_balance",
+      "kind": "method",
+      "score": 0.717714786529541
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "CustomerTests.test_can_afford_true_within_limit",
+      "kind": "method",
+      "score": 0.7071678638458252
+    },
+    {
+      "file": "playground/playground/models.py",
+      "qualname": "Customer.credit_limit",
+      "kind": "method",
+      "score": 0.6965555548667908
+    }
+  ],
+  "answer": "def can_afford(self, total: Money) -> bool:\n    \"\"\"Return True if ``balance + total`` does not exceed the credit limit.\"\"\"\n    return (self._balance + total) <= self._credit_limit",
+  "wrote": true
+}

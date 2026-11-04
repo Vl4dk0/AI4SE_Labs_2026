@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/inventory.py",
+  "class": "InventoryLedger",
+  "method": "__contains__",
+  "prompt": "Task:\nfile: playground/playground/inventory.py\nclass: InventoryLedger\nmethod: __contains__\ndocstring: Return whether ``sku`` normalises to a SKU with positive on-hand stock.\n\nRequired method:\n    def __contains__(self, sku: object) -> bool:\n\nRetrieved code:\n# playground/playground/inventory.py :: InventoryLedger._require_sku\n    def _require_sku(self, sku: str) -> str:\n        \"\"\"Normalise ``sku`` and raise ``UnknownSKUError`` if it is unregistered.\"\"\"\n        sku = normalize_sku(sku)\n        if sku not in self._product_repo:\n            raise UnknownSKUError(sku)\n        return sku\n\n# playground/tests/test_inventory.py :: InventoryLedgerStockTests.test_add_stock_unknown_sku\n    def test_add_stock_unknown_sku(self) -> None:\n        with self.assertRaises(UnknownSKUError) as ctx:\n            self.ledger.add_stock(\"ZZ-9999\", 1)\n        self.assertEqual(ctx.exception.sku, \"ZZ-9999\")\n\n# playground/tests/test_inventory.py :: InventoryLedgerStockTests.test_available_unknown_sku\n    def test_available_unknown_sku(self) -> None:\n        with self.assertRaises(UnknownSKUError):\n            self.ledger.available(\"ZZ-9999\")\n\n# playground/tests/test_inventory.py :: InventoryLedgerStockTests.test_require_sku_unknown_raises\n    def test_require_sku_unknown_raises(self) -> None:\n        with self.assertRaises(UnknownSKUError):\n            self.ledger._require_sku(\"GR-9999\")\n\n# playground/tests/test_inventory.py :: InventoryLedgerStockTests.test_require_sku_returns_normalized\n    def test_require_sku_returns_normalized(self) -> None:\n        self.assertEqual(self.ledger._require_sku(\" gr-2001 \"), \"GR-2001\")",
+  "chunks": [
+    {
+      "file": "playground/playground/inventory.py",
+      "qualname": "InventoryLedger._require_sku",
+      "kind": "method",
+      "score": 0.7185156345367432
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "InventoryLedgerStockTests.test_add_stock_unknown_sku",
+      "kind": "method",
+      "score": 0.6750728487968445
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "InventoryLedgerStockTests.test_available_unknown_sku",
+      "kind": "method",
+      "score": 0.6744224429130554
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "InventoryLedgerStockTests.test_require_sku_unknown_raises",
+      "kind": "method",
+      "score": 0.6637499332427979
+    },
+    {
+      "file": "playground/tests/test_inventory.py",
+      "qualname": "InventoryLedgerStockTests.test_require_sku_returns_normalized",
+      "kind": "method",
+      "score": 0.6620640754699707
+    }
+  ],
+  "answer": "def __contains__(self, sku: object) -> bool:\n    \"\"\"Return whether ``sku`` normalises to a SKU with positive on-hand stock.\"\"\"\n    try:\n        sku = normalize_sku(sku)\n    except Exception:\n        return False\n    if sku not in self._product_repo:\n        return False\n    return self.available(sku) > 0",
+  "wrote": true
+}

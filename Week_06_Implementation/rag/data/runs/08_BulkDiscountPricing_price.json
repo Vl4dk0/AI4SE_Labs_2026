@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/pricing.py",
+  "class": "BulkDiscountPricing",
+  "method": "price",
+  "prompt": "Task:\nfile: playground/playground/pricing.py\nclass: BulkDiscountPricing\nmethod: price\ndocstring: Return the base price, less the discount if the quantity qualifies.\n\nRequired method:\n    def price(self, items: Sequence[LineItem]) -> Money:\n\nRetrieved code:\n# playground/tests/test_pricing.py :: BulkDiscountPriceTests.test_wraps_base_with_tax\n    def test_wraps_base_with_tax(self) -> None:\n        items = [LineItem(\"EL-1001\", 1, Money(1000))]\n        d = BulkDiscountPricing(FlatPricing(1000), 1, 10)\n        # base with 10% tax = 1100; discount = 110 -> 990\n        self.assertEqual(d.price(items), Money(990))\n\n# playground/tests/test_pricing.py :: BulkDiscountPriceTests.test_call_matches_price\n    def test_call_matches_price(self) -> None:\n        items = [LineItem(\"EL-1001\", 3, Money(100))]\n        d = BulkDiscountPricing(FlatPricing(), 1, 10)\n        self.assertEqual(d(items), d.price(items))\n\n# playground/playground/pricing.py :: BulkDiscountPricing.percent_off\n    @property\n    def percent_off(self) -> int:\n        \"\"\"Return the discount percentage.\"\"\"\n        return self._percent_off\n\n# playground/playground/pricing.py :: BulkDiscountPricing\nclass BulkDiscountPricing(PricingStrategy):\n    \"\"\"Wraps another strategy; applies a percent discount when total quantity meets a threshold.\"\"\"\n    def __init__(self, base: PricingStrategy, threshold: int, percent_off: int) -> None: ...\n    @property\n    def threshold(self) -> int: ...\n    @property\n    def percent_off(self) -> int: ...\n    def price(self, items: Sequence[LineItem]) -> Money: ...\n    def __repr__(self) -> str: ...\n\n# playground/tests/test_pricing.py :: BulkDiscountPriceTests.test_discount_uses_floor_division\n    def test_discount_uses_floor_division(self) -> None:\n        # base 333; 333 * 10 // 100 = 33 -> 300\n        items = [LineItem(\"EL-1001\", 1, Money(333))]\n        d = BulkDiscountPricing(FlatPricing(), 1, 10)\n        self.assertEqual(d.price(items), Money(300))",
+  "chunks": [
+    {
+      "file": "playground/tests/test_pricing.py",
+      "qualname": "BulkDiscountPriceTests.test_wraps_base_with_tax",
+      "kind": "method",
+      "score": 0.7508561611175537
+    },
+    {
+      "file": "playground/tests/test_pricing.py",
+      "qualname": "BulkDiscountPriceTests.test_call_matches_price",
+      "kind": "method",
+      "score": 0.7329251766204834
+    },
+    {
+      "file": "playground/playground/pricing.py",
+      "qualname": "BulkDiscountPricing.percent_off",
+      "kind": "method",
+      "score": 0.7257986068725586
+    },
+    {
+      "file": "playground/playground/pricing.py",
+      "qualname": "BulkDiscountPricing",
+      "kind": "class_header",
+      "score": 0.7250599265098572
+    },
+    {
+      "file": "playground/tests/test_pricing.py",
+      "qualname": "BulkDiscountPriceTests.test_discount_uses_floor_division",
+      "kind": "method",
+      "score": 0.720887303352356
+    }
+  ],
+  "answer": "def price(self, items: Sequence[LineItem]) -> Money:\n    \"\"\"Return the base price, less the discount if the quantity qualifies.\"\"\"\n    base = self._base.price(items)\n    total_qty = sum(item.quantity for item in items)\n    if total_qty < self.threshold:\n        return base\n    # discount is floor division of the base amount by the percent off\n    discount_amount = (base.amount * self.percent_off) // 100\n    return Money(base.amount - discount_amount)",
+  "wrote": true
+}

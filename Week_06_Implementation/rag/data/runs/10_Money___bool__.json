@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/models.py",
+  "class": "Money",
+  "method": "__bool__",
+  "prompt": "Task:\nfile: playground/playground/models.py\nclass: Money\nmethod: __bool__\ndocstring: Return True when the amount is non-zero.\n\nRequired method:\n    def __bool__(self) -> bool:\n\nRetrieved code:\n# playground/playground/models.py :: Money\nclass Money:\n    \"\"\"Immutable integer-cents amount.\"\"\"\n    def __init__(self, cents: int = 0) -> None: ...\n    @property\n    def cents(self) -> int: ...\n    def __add__(self, other: Money) -> Money: ...\n    def __sub__(self, other: Money) -> Money: ...\n    def __mul__(self, factor: int) -> Money: ...\n    def __rmul__(self, factor: int) -> Money: ...\n    def __eq__(self, other: object) -> bool: ...\n    def __lt__(self, other: Money) -> bool: ...\n    def __le__(self, other: Money) -> bool: ...\n    def __hash__(self) -> int: ...\n    def __repr__(self) -> str: ...\n    def __str__(self) -> str: ...\n    def __bool__(self) -> bool: ...\n\n# playground/tests/test_models.py :: MoneyMiscTests.test_bool_false_for_zero\n    def test_bool_false_for_zero(self) -> None:\n        self.assertFalse(bool(Money(0)))\n\n# playground/tests/test_models.py :: MoneyMiscTests.test_bool_true_for_nonzero\n    def test_bool_true_for_nonzero(self) -> None:\n        self.assertTrue(bool(Money(1)))\n\n# playground/tests/test_models.py :: MoneyComparisonTests.test_lt_true\n    def test_lt_true(self) -> None:\n        self.assertTrue(Money(1) < Money(2))\n\n# playground/tests/test_models.py :: MoneyConstructionTests.test_default_is_zero\n    def test_default_is_zero(self) -> None:\n        self.assertEqual(Money().cents, 0)",
+  "chunks": [
+    {
+      "file": "playground/playground/models.py",
+      "qualname": "Money",
+      "kind": "class_header",
+      "score": 0.6620131731033325
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "MoneyMiscTests.test_bool_false_for_zero",
+      "kind": "method",
+      "score": 0.6498812437057495
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "MoneyMiscTests.test_bool_true_for_nonzero",
+      "kind": "method",
+      "score": 0.643349289894104
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "MoneyComparisonTests.test_lt_true",
+      "kind": "method",
+      "score": 0.5981680750846863
+    },
+    {
+      "file": "playground/tests/test_models.py",
+      "qualname": "MoneyConstructionTests.test_default_is_zero",
+      "kind": "method",
+      "score": 0.5976040959358215
+    }
+  ],
+  "answer": "def __bool__(self) -> bool:\n    \"\"\"Return True when the amount is non-zero.\"\"\"\n    return self.cents != 0",
+  "wrote": true
+}

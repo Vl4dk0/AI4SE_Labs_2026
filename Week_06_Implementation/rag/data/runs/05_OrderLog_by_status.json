@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/orders.py",
+  "class": "OrderLog",
+  "method": "by_status",
+  "prompt": "Task:\nfile: playground/playground/orders.py\nclass: OrderLog\nmethod: by_status\ndocstring: Yield orders whose status matches ``status``.\n\nRequired method:\n    def by_status(self, status: OrderStatus) -> Iterator[Order]:\n\nRetrieved code:\n# playground/playground/orders.py :: OrderLog\nclass OrderLog:\n    \"\"\"Ordered, deduplicated record of orders; iterable.\"\"\"\n    def __init__(self) -> None: ...\n    def record(self, order: Order) -> None: ...\n    def by_status(self, status: OrderStatus) -> Iterator[Order]: ...\n    def __getitem__(self, index: int) -> Order: ...\n    def __len__(self) -> int: ...\n    def __iter__(self) -> Iterator[Order]: ...\n\n# playground/playground/orders.py :: Order.status\n    @property\n    def status(self) -> OrderStatus:\n        \"\"\"Return the current order status.\"\"\"\n        return self._status\n\n# playground/tests/test_orders.py :: OrderLogTests.test_by_status_filters\n    def test_by_status_filters(self) -> None:\n        a, b, c = _order(\"ORD-1\"), _order(\"ORD-2\"), _order(\"ORD-3\")\n        for o in (a, b, c):\n            self.log.record(o)\n        b.advance(OrderStatus.CANCELLED)\n        c.advance(OrderStatus.RESERVED)\n        self.assertEqual([o.order_id for o in self.log.by_status(OrderStatus.NEW)], [\"ORD-1\"])\n        self.assertEqual([o.order_id for o in self.log.by_status(OrderStatus.CANCELLED)], [\"ORD-2\"])\n        self.assertEqual([o.order_id for o in self.log.by_status(OrderStatus.RESERVED)], [\"ORD-3\"])\n        self.assertEqual(list(self.log.by_status(OrderStatus.SHIPPED)), [])\n\n# playground/tests/test_orders.py :: OrderLogTests.test_by_status_non_status_raises_on_first_next\n    def test_by_status_non_status_raises_on_first_next(self) -> None:\n        gen = self.log.by_status(\"new\")  # type: ignore[arg-type]\n        with self.assertRaises(TypeError):\n            next(gen)\n\n# playground/playground/orders.py :: <module>\n\"\"\"Order state-machine, order aggregates, builder, and log.\"\"\"\n\nfrom __future__ import annotations\n\nfrom typing import Dict, FrozenSet, Iterator, List, Tuple\n\nfrom .base import PricingStrategy\nfrom .enums import OrderStatus\nfrom .exceptions import DuplicateEntityError, InvalidTransitionError\nfrom .models import Customer, LineItem, Money\nfrom .pricing import FlatPricing",
+  "chunks": [
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderLog",
+      "kind": "class_header",
+      "score": 0.7553378939628601
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "Order.status",
+      "kind": "method",
+      "score": 0.6929731369018555
+    },
+    {
+      "file": "playground/tests/test_orders.py",
+      "qualname": "OrderLogTests.test_by_status_filters",
+      "kind": "method",
+      "score": 0.6792152523994446
+    },
+    {
+      "file": "playground/tests/test_orders.py",
+      "qualname": "OrderLogTests.test_by_status_non_status_raises_on_first_next",
+      "kind": "method",
+      "score": 0.6766942143440247
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "<module>",
+      "kind": "module_header",
+      "score": 0.6640125513076782
+    }
+  ],
+  "answer": "def by_status(self, status: OrderStatus) -> Iterator[Order]:\n    \"\"\"Yield orders whose status matches ``status``.\"\"\"\n    if not isinstance(status, OrderStatus):\n        raise TypeError(\"status must be an OrderStatus\")\n    for order in self:\n        if order.status == status:\n            yield order",
+  "wrote": true
+}

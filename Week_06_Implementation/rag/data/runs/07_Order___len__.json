@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/orders.py",
+  "class": "Order",
+  "method": "__len__",
+  "prompt": "Task:\nfile: playground/playground/orders.py\nclass: Order\nmethod: __len__\ndocstring: Return the number of line items.\n\nRequired method:\n    def __len__(self) -> int:\n\nRetrieved code:\n# playground/playground/orders.py :: OrderBuilder.__len__\n    def __len__(self) -> int:\n        \"\"\"Return the number of recorded lines.\"\"\"\n        return len(self._lines)\n\n# playground/playground/orders.py :: OrderLog.__len__\n    def __len__(self) -> int:\n        \"\"\"Return the number of logged orders.\"\"\"\n        return len(self._orders)\n\n# playground/playground/orders.py :: OrderLog\nclass OrderLog:\n    \"\"\"Ordered, deduplicated record of orders; iterable.\"\"\"\n    def __init__(self) -> None: ...\n    def record(self, order: Order) -> None: ...\n    def by_status(self, status: OrderStatus) -> Iterator[Order]: ...\n    def __getitem__(self, index: int) -> Order: ...\n    def __len__(self) -> int: ...\n    def __iter__(self) -> Iterator[Order]: ...\n\n# playground/playground/orders.py :: <module>\n\"\"\"Order state-machine, order aggregates, builder, and log.\"\"\"\n\nfrom __future__ import annotations\n\nfrom typing import Dict, FrozenSet, Iterator, List, Tuple\n\nfrom .base import PricingStrategy\nfrom .enums import OrderStatus\nfrom .exceptions import DuplicateEntityError, InvalidTransitionError\nfrom .models import Customer, LineItem, Money\nfrom .pricing import FlatPricing\n\n# playground/playground/orders.py :: Order.items\n    @property\n    def items(self) -> Tuple[LineItem, ...]:\n        \"\"\"Return a tuple copy of the order's line items.\"\"\"\n        return tuple(self._items)",
+  "chunks": [
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderBuilder.__len__",
+      "kind": "method",
+      "score": 0.6867473721504211
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderLog.__len__",
+      "kind": "method",
+      "score": 0.6443692445755005
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderLog",
+      "kind": "class_header",
+      "score": 0.6115851402282715
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "<module>",
+      "kind": "module_header",
+      "score": 0.5984010696411133
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "Order.items",
+      "kind": "method",
+      "score": 0.5921069979667664
+    }
+  ],
+  "answer": "def __len__(self) -> int:\n    \"\"\"Return the number of line items.\"\"\"\n    return len(self._items)",
+  "wrote": true
+}

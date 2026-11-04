@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/orders.py",
+  "class": "OrderStateMachine",
+  "method": "transition",
+  "prompt": "Task:\nfile: playground/playground/orders.py\nclass: OrderStateMachine\nmethod: transition\ndocstring: Return ``target`` if the transition is allowed, else raise.\n\nRequired method:\n    def transition(self, source: OrderStatus, target: OrderStatus) -> OrderStatus:\n\nRetrieved code:\n# playground/playground/orders.py :: OrderStateMachine.__call__\n    def __call__(self, source: OrderStatus, target: OrderStatus) -> OrderStatus:\n        \"\"\"Convenience alias for :meth:`transition`.\"\"\"\n        return self.transition(source, target)\n\n# playground/playground/orders.py :: Order.advance\n    def advance(self, target: OrderStatus) -> None:\n        \"\"\"Transition the order to ``target`` status, raising if not allowed.\"\"\"\n        new_status = self._machine.transition(self._status, target)\n        self._status = new_status\n\n# playground/tests/test_orders.py :: OrderStateMachineTests.test_transition_returns_target_when_legal\n    def test_transition_returns_target_when_legal(self) -> None:\n        sm = OrderStateMachine()\n        self.assertIs(sm.transition(OrderStatus.NEW, OrderStatus.RESERVED), OrderStatus.RESERVED)\n\n# playground/playground/orders.py :: OrderStateMachine\nclass OrderStateMachine:\n    \"\"\"Legal OrderStatus transitions, data-driven via TRANSITIONS.\"\"\"\n    TRANSITIONS: Dict[OrderStatus, FrozenSet[OrderStatus]] = {\n        OrderStatus.NEW: frozenset({OrderStatus.RESERVED, OrderStatus.CANCELLED}),\n        OrderStatus.RESERVED: frozenset({OrderStatus.SHIPPED, OrderStatus.CANCELLED}),\n        OrderStatus.SHIPPED: frozenset(),\n        OrderStatus.CANCELLED: frozenset(),\n    }\n    @staticmethod\n    def allowed_from(status: OrderStatus) -> FrozenSet[OrderStatus]: ...\n    def can_transition(self, source: OrderStatus, target: OrderStatus) -> bool: ...\n    def transition(self, source: OrderStatus, target: OrderStatus) -> OrderStatus: ...\n    def __call__(self, source: OrderStatus, target: OrderStatus) -> OrderStatus: ...\n\n# playground/playground/orders.py :: OrderStateMachine.can_transition\n    def can_transition(self, source: OrderStatus, target: OrderStatus) -> bool:\n        \"\"\"Return whether ``target`` is reachable from ``source``.\"\"\"\n        return target in OrderStateMachine.allowed_from(source)",
+  "chunks": [
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderStateMachine.__call__",
+      "kind": "method",
+      "score": 0.6145370006561279
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "Order.advance",
+      "kind": "method",
+      "score": 0.6116108894348145
+    },
+    {
+      "file": "playground/tests/test_orders.py",
+      "qualname": "OrderStateMachineTests.test_transition_returns_target_when_legal",
+      "kind": "method",
+      "score": 0.6098144054412842
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderStateMachine",
+      "kind": "class_header",
+      "score": 0.5950859785079956
+    },
+    {
+      "file": "playground/playground/orders.py",
+      "qualname": "OrderStateMachine.can_transition",
+      "kind": "method",
+      "score": 0.5829909443855286
+    }
+  ],
+  "answer": "def transition(self, source: OrderStatus, target: OrderStatus) -> OrderStatus:\n    \"\"\"Return ``target`` if the transition is allowed, else raise.\"\"\"\n    if self.can_transition(source, target):\n        return target\n    raise ValueError(f\"Illegal transition from {source!r} to {target!r}\")",
+  "wrote": true
+}

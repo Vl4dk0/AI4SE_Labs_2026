@@ -1,0 +1,6 @@
+{
+  "model": "flax-sentence-embeddings/st-codesearch-distilroberta-base",
+  "dims": 768,
+  "chunk_count": 828,
+  "chunks_sha256": "9c7b58ac5049e852495df4230b2a99c95da7c17ced96e3af4f37d33c135ef7f9"
+}

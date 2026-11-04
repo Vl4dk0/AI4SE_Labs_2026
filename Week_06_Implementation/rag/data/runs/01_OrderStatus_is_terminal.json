@@ -1,0 +1,41 @@
+{
+  "model": "gpt-5-mini",
+  "file": "playground/playground/enums.py",
+  "class": "OrderStatus",
+  "method": "is_terminal",
+  "prompt": "Task:\nfile: playground/playground/enums.py\nclass: OrderStatus\nmethod: is_terminal\ndocstring: True when the status ends further transitions.\n\nRequired method:\n    @property\n    def is_terminal(self) -> bool:\n\nRetrieved code:\n# playground/playground/enums.py :: OrderStatus\nclass OrderStatus(Enum):\n    \"\"\"Lifecycle stages for an order.\"\"\"\n    NEW = \"new\"\n    RESERVED = \"reserved\"\n    SHIPPED = \"shipped\"\n    CANCELLED = \"cancelled\"\n    @property\n    def is_terminal(self) -> bool: ...\n\n# playground/tests/test_enums.py :: OrderStatusTests.test_cancelled_is_terminal\n    def test_cancelled_is_terminal(self) -> None:\n        self.assertIs(OrderStatus.CANCELLED.is_terminal, True)\n\n# playground/tests/test_enums.py :: OrderStatusTests.test_shipped_is_terminal\n    def test_shipped_is_terminal(self) -> None:\n        self.assertIs(OrderStatus.SHIPPED.is_terminal, True)\n\n# playground/tests/test_enums.py :: OrderStatusTests.test_reserved_is_not_terminal\n    def test_reserved_is_not_terminal(self) -> None:\n        self.assertIs(OrderStatus.RESERVED.is_terminal, False)\n\n# playground/tests/test_enums.py :: OrderStatusTests.test_new_is_not_terminal\n    def test_new_is_not_terminal(self) -> None:\n        self.assertIs(OrderStatus.NEW.is_terminal, False)",
+  "chunks": [
+    {
+      "file": "playground/playground/enums.py",
+      "qualname": "OrderStatus",
+      "kind": "class_header",
+      "score": 0.5786084532737732
+    },
+    {
+      "file": "playground/tests/test_enums.py",
+      "qualname": "OrderStatusTests.test_cancelled_is_terminal",
+      "kind": "method",
+      "score": 0.5480155944824219
+    },
+    {
+      "file": "playground/tests/test_enums.py",
+      "qualname": "OrderStatusTests.test_shipped_is_terminal",
+      "kind": "method",
+      "score": 0.5193159580230713
+    },
+    {
+      "file": "playground/tests/test_enums.py",
+      "qualname": "OrderStatusTests.test_reserved_is_not_terminal",
+      "kind": "method",
+      "score": 0.5154210329055786
+    },
+    {
+      "file": "playground/tests/test_enums.py",
+      "qualname": "OrderStatusTests.test_new_is_not_terminal",
+      "kind": "method",
+      "score": 0.47982242703437805
+    }
+  ],
+  "answer": "@property\ndef is_terminal(self) -> bool:\n    \"\"\"True when the status ends further transitions.\"\"\"\n    return self in (OrderStatus.CANCELLED, OrderStatus.SHIPPED)",
+  "wrote": true
+}

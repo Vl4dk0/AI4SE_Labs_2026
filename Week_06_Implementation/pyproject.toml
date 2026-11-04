@@ -1,0 +1,32 @@
+[project]
+name = "week06-rag"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0",
+    "openai>=1.68",
+    "pydantic>=2.11",
+    "python-dotenv>=1.1",
+    "sentence-transformers>=5.0",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.400",
+    "ruff>=0.11",
+]
+
+[tool.uv]
+package = false
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+include = ["rag"]
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["rag"]

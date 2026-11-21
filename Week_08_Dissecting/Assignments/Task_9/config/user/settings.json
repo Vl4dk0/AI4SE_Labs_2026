@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "ENABLE_LSP_TOOL": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(* --help)",
+      "Bash(* --version)",
+      "Bash(ls*)",
+      "Bash(cat*)",
+      "Bash(pwd*)",
+      "Bash(find*)",
+      "Bash(grep*)",
+      "Bash(rg*)",
+      "Bash(diff*)",
+      "Bash(curl*)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(gh issue*)",
+      "Bash(gh pr*)",
+      "Bash(gh repo view*)",
+      "Bash(gh status*)",
+      "Bash(gh run*)",
+      "Bash(gh search*)",
+      "Bash(gh browse*)",
+      "Bash(gh release*)",
+      "Bash(gh gist*)",
+      "Bash(gh variable list*)",
+      "Bash(gh extension list*)",
+      "Bash(basedpyright*)",
+      "Bash(uv run basedpyright*)",
+      "Bash(echo*)",
+      "Bash(date*)",
+      "Bash(tree*)",
+      "Bash(tldr*)",
+      "Bash(man*)",
+      "Bash(which*)",
+      "Bash(whoami*)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(wc*)",
+      "Bash(du*)",
+      "Bash(df*)",
+      "Bash(ps*)",
+      "Bash(uptime*)",
+      "Bash(pytest*)",
+      "Bash(python -m py_compile*)",
+      "Bash(python3 -m py_compile*)",
+      "Bash(npm list*)",
+      "Bash(npm ls*)",
+      "Bash(npm view*)",
+      "Bash(npm info*)",
+      "Bash(npm outdated*)",
+      "Bash(npm search*)",
+      "Bash(npm help*)",
+      "Bash(npm doctor*)",
+      "Bash(npm audit*)",
+      "Bash(npm config list*)",
+      "Bash(npm config get*)",
+      "Bash(typst *)",
+      "Bash(typstyle *)",
+      "Bash(crew *)",
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "mcp__<REDACTED>",
+      "mcp__<REDACTED-2>"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Bash(caffeinate*)",
+      "Bash(*caffeinate*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/autoformat.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "outputStyle": "Concise",
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "low",
+      "autoCompactWindow": 350000
+    }
+  },
+  "promptSuggestionEnabled": false,
+  "tui": "fullscreen",
+  "editorMode": "normal",
+  "preferredNotifChannel": "ghostty",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
+}

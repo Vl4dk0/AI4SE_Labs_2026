@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dice": {
+      "command": "uv",
+      "args": ["run", "--script", "Week_08_Dissecting/Assignments/Task_7/dice_server.py"]
+    }
+  }
+}

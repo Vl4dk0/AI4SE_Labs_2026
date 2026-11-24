@@ -1,0 +1,10 @@
+{
+  "mcpServers": {},
+  "projects": {
+    "<repo>": {
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": []
+    }
+  }
+}
